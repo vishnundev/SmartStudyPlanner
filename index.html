@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Study Planner</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <h1>Smart Study Planner</h1>
+      <div class="controls">
+        <button id="themeToggle" title="Toggle dark/light">🌙</button>
+        <button id="exportBtn" title="Export tasks">Export</button>
+        <button id="importBtn" title="Import tasks">Import</button>
+        <input id="importFile" type="file" accept=".json" style="display:none">
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="left">
+        <div class="add-card">
+          <h2>Add Task</h2>
+          <label for="title" class="visually-hidden">Task Title</label>
+          <input id="title" placeholder="Task title" />
+          <label for="desc" class="visually-hidden">Description</label>
+          <textarea id="desc" placeholder="Short description (optional)"></textarea>
+          <div class="row">
+            <label for="date" class="visually-hidden">Due Date</label>
+            <input id="date" type="date" title="Due Date"/>
+            <label for="priority" class="visually-hidden">Priority</label>
+            <select id="priority" title="Priority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+            <label for="tag" class="visually-hidden">Tag</label>
+            <input id="tag" placeholder="Tag (e.g. Math)" />
+          </div>
+          <div class="row">
+            <button id="addBtn">Add Task</button>
+            <button id="clearBtn" class="muted">Clear</button>
+          </div>
+        </div>
+
+        <div class="tasks-card">
+          <h2>Tasks</h2>
+          <div id="filters" class="filters">
+            <input id="search" placeholder="Search tasks..." />
+            <select id="filterTag" title="Filter by Tag"><option value="">All Tags</option></select>
+            <select id="filterStatus" title="Filter by Status"><option value="">All</option><option value="pending">Pending</option><option value="done">Done</option></select>
+          </div>
+          <div id="tasksList" class="tasks-list"></div>
+        </div>
+      </section>
+
+      <aside class="right">
+        <div class="progress-card">
+          <h2>Progress</h2>
+          <canvas id="progressChart" width="300" height="160"></canvas>
+          <div class="progress-stats">
+            <div>Completed: <span id="completedCount">0</span></div>
+            <div>Pending: <span id="pendingCount">0</span></div>
+            <div>Total: <span id="totalCount">0</span></div>
+          </div>
+        </div>
+
+        <div class="pomodoro-card">
+          <h2>Pomodoro Timer</h2>
+          <div class="pomodoro-display">
+            <div id="pomodoroTask">No task selected</div>
+            <div id="timer">25:00</div>
+            <div class="pom-controls">
+              <button id="startPom">Start</button>
+              <button id="pausePom" class="muted">Pause</button>
+              <button id="resetPom" class="muted">Reset</button>
+            </div>
+            <div class="pom-settings">
+              <div class="setting">
+                <label for="workMin">Work (min)</label>
+                <input id="workMin" type="number" min="1" value="25">
+              </div>
+              <div class="setting">
+                <label for="breakMin">Break (min)</label>
+                <input id="breakMin" type="number" min="1" value="5">
+              </div>
+            </div>
+            <div class="pom-notes">Tip: select a task and press <b>Start</b> to focus.</div>
+          </div>
+        </div>
+
+        <div class="notes-card">
+          <h2>Quick Notes</h2>
+          <textarea id="quickNotes" placeholder="Take quick notes..."></textarea>
+          <button id="saveNotes" class="muted">Save Notes</button>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <div>Made with ❤️ • Smart Study Planner</div>
+      <div class="small">Export/Import available. Data saved in browser storage.</div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

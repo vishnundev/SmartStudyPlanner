@@ -1,0 +1,156 @@
+/* Smart Study Planner - style.css */
+/* Basic reset */
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,Arial,Helvetica,sans-serif}
+
+:root{
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --muted:#6b6f76;
+  --accent:#6c5ce7;
+  --accent-2:#00b894;
+  --glass:rgba(255,255,255,0.6);
+  --shadow:0 6px 20px rgba(30,30,40,0.08);
+  --radius:14px;
+}
+
+body.dark{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --muted:#9aa4b2;
+  --accent:#7c5cff;
+  --accent-2:#38d39f;
+  --glass:rgba(255,255,255,0.03);
+  --shadow:0 8px 30px rgba(0,0,0,0.6);
+  color:#e6eef8;
+}
+
+body{background:linear-gradient(180deg,var(--bg),#ffffff);min-height:100vh;color:#102a43;}
+
+/* Accessibility helper class */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.app{max-width:1100px;margin:28px auto;padding:18px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.85));box-shadow:var(--shadow)}
+
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:8px 12px}
+.topbar h1{font-size:20px;letter-spacing:0.2px}
+.controls button{margin-left:8px;padding:8px 10px;border-radius:10px;border:none;background:var(--glass);cursor:pointer;box-shadow:var(--shadow)}
+
+.main{display:grid;grid-template-columns:1fr 340px;gap:18px;padding:18px}
+.left{display:flex;flex-direction:column;gap:14px}
+.add-card, .tasks-card, .progress-card, .pomodoro-card, .notes-card{background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow)}
+
+.add-card h2, .tasks-card h2, .progress-card h2, .pomodoro-card h2, .notes-card h2{margin-bottom:8px}
+.add-card input, .add-card textarea, .filters input, .filters select, .notes-card textarea{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(15,23,36,0.06);margin-bottom:8px;background:transparent}
+
+.add-card textarea{min-height:64px}
+.row{display:flex;gap:8px;align-items:center}
+.row input[type="date"]{flex:1}
+.row select, .row input{padding:8px;border-radius:8px;border:1px solid rgba(15,23,36,0.06)}
+
+button#addBtn{background:linear-gradient(90deg,var(--accent),#5f21ff);color:white;padding:10px 12px;border-radius:10px;border:none;cursor:pointer}
+button.muted{background:transparent;border:1px dashed rgba(0,0,0,0.06);padding:8px;border-radius:8px;cursor:pointer}
+
+.tasks-list{display:flex;flex-direction:column;gap:10px;max-height:420px;overflow:auto;padding-right:6px}
+.task{display:flex;justify-content:space-between;align-items:flex-start;padding:12px;border-radius:10px;border-left:6px solid var(--accent);background:linear-gradient(180deg,rgba(0,0,0,0.01),transparent)}
+.task.done{opacity:0.6;text-decoration:line-through;border-left-color:var(--accent-2)}
+
+.task .meta{flex:1;padding-right:12px}
+.task h3{font-size:15px;margin-bottom:6px}
+.task p{font-size:13px;color:var(--muted);margin-bottom:8px}
+.task .tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{background:rgba(0,0,0,0.04);padding:4px 8px;border-radius:8px;font-size:12px}
+
+.task .actions{display:flex;flex-direction:column;gap:6px}
+.action-btn{background:transparent;border:none;cursor:pointer;padding:6px;border-radius:8px}
+
+.filters{display:flex;gap:8px;margin-bottom:8px}
+.filters input, .filters select{padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)}
+
+.right{display:flex;flex-direction:column;gap:12px}
+.progress-card canvas{max-width:100%}
+.progress-stats{display:flex;justify-content:space-between;margin-top:8px;font-size:13px;color:var(--muted)}
+
+.pomodoro-display{display:flex;flex-direction:column;align-items:center;gap:8px;padding:8px}
+#timer{font-size:34px;letter-spacing:1px;background:linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2));padding:8px 18px;border-radius:10px}
+.pom-controls button{margin:6px;padding:8px 10px;border-radius:10px;border:none;background:var(--accent);color:white;cursor:pointer}
+.pom-controls .muted{background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--muted)}
+
+/* NEW Pomodoro Settings Styles */
+.pom-settings {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  margin-top: 8px;
+}
+.pom-settings .setting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.pom-settings input[type="number"] {
+  width: 65px;
+  padding: 5px;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: transparent;
+}
+.pom-notes{font-size:12px;color:var(--muted); margin-top: 8px;}
+
+.notes-card textarea{min-height:80px}
+
+.footer{display:flex;justify-content:space-between;padding:12px 18px;margin-top:12px;color:var(--muted);font-size:13px}
+
+/* responsive */
+@media (max-width:900px){
+  .main{grid-template-columns:1fr; padding:12px}
+  .right{order:2}
+  .left{order:1}
+}
+
+.small{font-size:12px;color:var(--muted)}
+
+/* nice scrollbar */
+.tasks-list::-webkit-scrollbar{width:8px}
+.tasks-list::-webkit-scrollbar-thumb{background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:8px}
+
+
+/* === DARK MODE FIXES === */
+body.dark input,
+body.dark textarea,
+body.dark select {
+  color: #e6eef8;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+body.dark ::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+body.dark select {
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%239aa4b2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right .7em top 50%;
+  background-size: .65em auto;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+body.dark .pom-settings input[type="number"] {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e6eef8;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
