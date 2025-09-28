@@ -2,9 +2,8 @@
 
 A responsive study planner web app built with Vanilla JavaScript that helps you organize tasks, stay focused with a Pomodoro timer, and track your progress with beautiful charts.
 
-### **[✨ Live Demo ✨](https://<your-username>.github.io/<your-repo-name>/)**
+### [✨ Live Demo ✨](https://vishnundev.github.io/SmartStudyPlanner/)
 
-*(You will update this link after deploying!)*
 
 
 
